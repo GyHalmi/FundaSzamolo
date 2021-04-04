@@ -18,17 +18,27 @@ namespace FundaSzamolo
         {
             InitializeComponent();
             txtKezdet.Text = idotKiir(KEZDET);
+            txtKezdet.ReadOnly = true;
+            txtKezdet.TextAlign = HorizontalAlignment.Center;
+            
             vizsgalt = DateTime.Now;
             txtVizsgalt.Text = idotKiir(vizsgalt);
-            txtKezdet.Enabled = false;
-
-            txtKezdet.TextAlign = HorizontalAlignment.Center;
             txtVizsgalt.TextAlign = HorizontalAlignment.Center;
-            txtHonapok.TextAlign = HorizontalAlignment.Right;
-            txtBefiz.TextAlign = HorizontalAlignment.Right;
-            txtTamogat.TextAlign = HorizontalAlignment.Right;
-            txtMegtakarit.TextAlign = HorizontalAlignment.Right;
+      
+            eredmenyTxtFormaz();
+            
         }
+
+        private void eredmenyTxtFormaz()
+        {
+            List<TextBox> txtk = new List<TextBox> { txtHonapok, txtBefiz, txtTamogat, txtMegtakarit };
+            foreach (var txt in txtk)
+            {
+                txt.TextAlign = HorizontalAlignment.Right;
+                txt.ReadOnly = true;
+            }
+        }
+
         private string idotKiir(DateTime ido)
         {
             return ido.ToString("yyyy. MM. dd.");
